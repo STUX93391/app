@@ -9,15 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
 
     /**
      * Show the form for creating a new product related to buisness.
@@ -85,28 +76,6 @@ class ProductController extends Controller
                                         ->with('listpro',$listpro);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -119,6 +88,8 @@ class ProductController extends Controller
         Product::whereId($id)->delete();
         return redirect()->back();
     }
+
+    
     /**
      * Function for incrementing the account balance of the related buisness when a product is sold.
      *
