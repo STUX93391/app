@@ -38,7 +38,7 @@ class AccountController extends Controller
         ]);
 
          $store= new Account;
-         $store->title=$request->title;
+         $store->account_title=$request->title;
          $store->type=$request->type;
          $store->number=$request->number;
          $store->balance=$request->balance;
