@@ -32,10 +32,10 @@ Route::group(['middleware'=>['auth:sanctum','verified']],function(){
         //-------Buisness Routes-----//
     Route::get('/addbuisness',[BuisnessController::class,'create'])->name('addbuisness');
     Route::post('/addbuisness/submit',[BuisnessController::class,'store'])->name('subbuisness');
-    Route::post('/addbuisness/{id}',[BuisnessController::class,'destroy'])->name('deletebuisness');
+    Route::post('/deletebuisness/{id}',[BuisnessController::class,'destroy'])->name('deletebuisness');
 
         //-------Account Routes-----//
-    Route::get('/addaccount/{bid}',[AccountController::class,'create'])->name('addaccount');
+    Route::get('/addaccount',[AccountController::class,'create'])->name('addaccount');
     Route::post('/addaccount/submit',[AccountController::class,'store'])->name('subaccount');
 
         //-------Product Routes-----//

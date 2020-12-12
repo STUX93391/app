@@ -46,7 +46,8 @@ class BuisnessController extends Controller
         $uid = auth()->user()->id;
         //creating buisness while getting the buisness id.
         $busid=DB::table('buisnesses')->insertGetId(['title'=>$request->title,'address'=>$request->address,'contact'=>$request->contact,'user_id'=>$uid]);
-        return redirect()->route('addaccount',$busid);
+        session(['addBuisnessId'=>$busid]);
+        return redirect()->route('addaccount');
         $this->clearVars();
     }
     /**

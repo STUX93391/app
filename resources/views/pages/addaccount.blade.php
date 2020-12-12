@@ -10,7 +10,6 @@
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
             <form action="{{route('subaccount')}}" method="POST">
                     @csrf
-                    <input type="hidden" name="buisness_id" value="{{$busid}}">
                     <label for="title">Title</label><br>
                     <input type="text" id="title" name="title"placeholder="Account Title"><br>
                     <label for="type">Type</label><br>

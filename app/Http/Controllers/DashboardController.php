@@ -17,7 +17,7 @@ class DashboardController extends Controller
     {
         $all = DB::table('buisnesses')
                                     ->join('accounts','buisnesses.id',"=",'accounts.buisness_id')
-                                    ->get();
+                                    ->simplePaginate(10);
 
         return view('dashboard')->with('all',$all);
     }

@@ -27,11 +27,22 @@
                                     <td>{{$one->address}}</td>
                                     <td>{{$one->contact}}</td>
                                     <td>{{$one->balance}}</td>
-                                    <td><a class="btn btn-primary" href="{{URL::route('viewproducts',$one->buisness_id)}}">{{ __('View Products') }}</a></td>
-                                    <td><a class="btn btn-danger" href="{{URL::route('deletebuisness',$one->buisness_id)}}">{{ __('Delete') }}</a></td>
+                                    <td>
+                                        <form action="{{route('viewproducts',$one->buisness_id)}}" method="get">
+                                            @csrf
+                                            <input type="submit" value="View Products" class="btn btn-info">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{route('deletebuisness',$one->buisness_id)}}" method="post">
+                                            @csrf
+                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                        </form>
+                                    </td>
 
                                 </tr>
                             @endforeach
+                            {{$all->links()}}
                         @else
                             <tr>
                                 <td>No results fount!</td>

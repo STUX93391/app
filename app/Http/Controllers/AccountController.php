@@ -10,6 +10,7 @@ use App\Models\Buisness;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Arr;
 
+
 class AccountController extends Controller
 {
     /**
@@ -17,9 +18,9 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($busid)
+    public function create()
     {
-        return view('pages.addaccount')->with('busid',$busid);
+        return view('pages.addaccount');
     }
 
     /**
@@ -42,7 +43,7 @@ class AccountController extends Controller
          $store->type=$request->type;
          $store->number=$request->number;
          $store->balance=$request->balance;
-         $store->buisness_id=$request->buisness_id;
+         $store->buisness_id=session('addBuisnessId');
          $store->save();
 
          return redirect('dashboard')->with('success','Buisness Created Successfully.');
