@@ -7,8 +7,9 @@
 
     <div class="py-12">
         <div class="container overflow-hidden bg-white shadow-xl sm:rounded-lg">
-            <form action="{{route('subproduct')}}" class="form-horizontal" method="POST">
-                <input type="hidden" value="{{$id}}">
+            <form action="{{route('subproduct')}}" method="POST">
+                @csrf
+                <input type="hidden" name="buisness_id" value="{{$id}}">
                 <div class="form-group row">
                     <div class="form-group">
                         <label for="title" >Title</label>
@@ -45,9 +46,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group">
                     <input type="submit" class="btn btn-info" value="Add Product">
-                </div>
             </form>
         </div>
     </div>

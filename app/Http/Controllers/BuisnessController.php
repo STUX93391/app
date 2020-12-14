@@ -40,7 +40,7 @@ class BuisnessController extends Controller
         $this->validate($request,[
             'title'=>'bail|required|string|max:15',
             'address'=>'bail|required|string',
-            'contact'=>'bail|required|integer|min:11|max:11'
+            'contact'=>'bail|required|numeric'
         ]);
         //locating the authenticated user.
         $uid = auth()->user()->id;

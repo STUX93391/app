@@ -26,7 +26,7 @@
                                     <td>{{$one->title}}</td>
                                     <td>{{$one->address}}</td>
                                     <td>{{$one->contact}}</td>
-                                    <td>{{$one->balance}}</td>
+                                    <td>Rs {{$one->balance}}</td>
                                     <td>
                                         <form action="{{route('viewproducts',$one->buisness_id)}}" method="get">
                                             @csrf

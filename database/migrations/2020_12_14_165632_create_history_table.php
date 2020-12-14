@@ -17,7 +17,7 @@ class CreateHistoryTable extends Migration
             $table->id();
             $table->string('product');
             $table->string('operation');
-            $table->timestamps();
+            $table->timestamp('time');
         });
     }
 

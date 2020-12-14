@@ -30,10 +30,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'bail|required|string|max:15',
-            'code'=>'bail|required|integer|max:10',
-            'type'=>'bail|required|string|max:15',
-            'price'=>'bail|required|integer',
+            'title'=>'bail|required|string',
+            'code'=>'bail|required|numeric',
+            'type'=>'bail|required|string',
+            'price'=>'bail|required|numeric',
         ]);
         $add =new Product;
         $add->buisness_id=$request->buisness_id;

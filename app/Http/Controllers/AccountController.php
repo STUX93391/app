@@ -34,8 +34,8 @@ class AccountController extends Controller
         $this->validate($request,[
             'title'=>'bail|required|string',
             'type'=>'bail|required|string',
-            'number'=>'bail|required|integer|unique:accounts,number',
-            'balance'=>'bail|required|integer',
+            'number'=>'bail|required|numeric|unique:accounts,number',
+            'balance'=>'bail|required|numeric',
         ]);
 
          $store= new Account;
