@@ -6,28 +6,49 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                {!! Form::open(['route'=>'subproduct']) !!}
-                    {!! Form::token() !!}
-                    {!! Form::hidden('buisness_id', $id) !!}
-                    {!! Form::label('title', 'Title') !!}
-                    {!! Form::text('title', '', ['placeholder'=>'Product Title','class'=>'form-input']) !!}
-
-                    {!! Form::label('code', 'Code') !!}
-                    {!! Form::text('code', '', ['placeholder'=>'Product Code','class'=>'form-input']) !!}
-
-                    {!! Form::label('type', 'Type') !!}
-                    {!! Form::text('type', '', ['placeholder'=>'Product Type','class'=>'form-input']) !!}
-
-
-
-                    {!! Form::label('price', 'Price') !!}
-                    {!! Form::text('price', '', ['placeholder'=>'Product Price','class'=>'form-input']) !!}
-
-                    {!! Form::submit('Create',['class'=>'btn btn-info']) !!}
-                {!! Form::close() !!}
-            </div>
+        <div class="container overflow-hidden bg-white shadow-xl sm:rounded-lg">
+            <form action="{{route('subproduct')}}" class="form-horizontal" method="POST">
+                <input type="hidden" value="{{$id}}">
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label for="title" >Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                        @if ($errors->has('title'))
+                            <span class="text-danger">{{$errors->first('title')}}</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label for="code" >Code</label>
+                        <input type="number" class="form-control" name="code">
+                        @if ($errors->has('code'))
+                            <span class="text-danger">{{$errors->first('code')}}</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label for="type" >Type</label>
+                        <input type="text" class="form-control" name="type">
+                        @if ($errors->has('type'))
+                            <span class="text-danger">{{$errors->first('type')}}</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label for="price" >Price</label>
+                        <input type="number" class="form-control" name="price">
+                        @if ($errors->has('price'))
+                            <span class="text-danger">{{$errors->first('price')}}</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Add Product">
+                </div>
+            </form>
         </div>
     </div>
 </x-app-layout>

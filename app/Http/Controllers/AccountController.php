@@ -32,10 +32,10 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required',
-            'type'=>'required',
-            'number'=>'required|unique:accounts,number',
-            'balance'=>'required',
+            'title'=>'bail|required|string',
+            'type'=>'bail|required|string',
+            'number'=>'bail|required|integer|unique:accounts,number',
+            'balance'=>'bail|required|integer',
         ]);
 
          $store= new Account;

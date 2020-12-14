@@ -6,22 +6,63 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-            <form action="{{route('subaccount')}}" method="POST">
+            <div class="container bg-white shadow-xl sm:rounded-lg">
+            <form action="{{route('subaccount')}}" method="POST" class="form-horizontal">
                     @csrf
-                    <label for="title">Title</label><br>
-                    <input type="text" id="title" name="title"placeholder="Account Title"><br>
-                    <label for="type">Type</label><br>
-                    <input type="text" id="type" name="type" placeholder="Account Type"><br>
-                    <label for="number">Number</label><br>
-                    <input type="text" id="number" name="number"placeholder="Account Number"><br>
-                    <label for="balance">Balance</label><br>
-                    <input type="integer" id="balance" name="balance"placeholder="Buisness Contact"><br>
-                    <input type="submit" value="Add" class="btn btn-info">
-
+                    <div class="form-group row">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <div class="col-xs-4">
+                                <input type="text" id="title" class="form-control" name="title"placeholder="Account Title">
+                            </div>
+                            @if ($errors->has('title'))
+                                <span class="text-danger">{{ $errors->first('title') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group">
+                            <label for="type">Select type:</label>
+                            <div class="col-xs-4">
+                                <select class="form-control" id="type" name="type">
+                                  <option>Basic</option>
+                                  <option>Premium</option>
+                                  <option>Silver</option>
+                                  <option>Gold</option>
+                            </select>
+                            </div>
+                            @if ($errors->has('type'))
+                                <span class="text-danger">{{ $errors->first('type') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group">
+                            <label for="number">Number</label>
+                            <div class="col-xs-4">
+                                <input type="text" id="number" class="form-control" name="number"placeholder="Account Number">
+                            </div>
+                            @if ($errors->has('number'))
+                                <span class="text-danger">{{ $errors->first('number') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group">
+                            <label for="balance">Balance</label>
+                            <div class="col-xs-4">
+                                <input type="integer" id="balance" class="form-control" name="balance"placeholder="Buisness Contact">
+                            </div>
+                            @if ($errors->has('balance'))
+                                <span class="text-danger">{{ $errors->first('balance') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add" class="btn btn-info">
+                        </div>
+                    </div>
                 </form>
             </div>
-        </div>
     </div>
 </x-app-layout>

@@ -38,9 +38,9 @@ class BuisnessController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required',
-            'address'=>'required',
-            'contact'=>'required|max:11'
+            'title'=>'bail|required|string|max:15',
+            'address'=>'bail|required|string',
+            'contact'=>'bail|required|integer|min:11|max:11'
         ]);
         //locating the authenticated user.
         $uid = auth()->user()->id;
