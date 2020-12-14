@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use PDO;
 
 class DashboardController extends Controller
 {
@@ -20,5 +21,9 @@ class DashboardController extends Controller
                                     ->simplePaginate(10);
 
         return view('dashboard')->with('all',$all);
+    }
+
+    function show(){
+        return ['user'=>'rippor'];
     }
 }

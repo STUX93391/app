@@ -30,6 +30,7 @@
                                     <td>
                                         <form action="{{route('viewproducts',$one->buisness_id)}}" method="get">
                                             @csrf
+
                                             <input type="submit" value="View Products" class="btn btn-info">
                                         </form>
                                     </td>
@@ -39,6 +40,7 @@
                                             <input type="submit" value="Delete" class="btn btn-danger">
                                         </form>
                                     </td>
+
 
                                 </tr>
                             @endforeach

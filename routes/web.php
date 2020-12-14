@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BuisnessController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -44,4 +45,5 @@ Route::group(['middleware'=>['auth:sanctum','verified']],function(){
     Route::post('/buyproduct/{id}',[ProductController::class,'buy'])->name('buyproduct');
     Route::get('/viewproducts/{bid?}',[ProductController::class,'show'])->whereNumber('bid')->name('viewproducts');
     Route::post('/deleteproduct/{id}',[ProductController::class,'destroy'])->name('deleteproduct');
+    Route::get('/history',[HistoryController::class,'history'])->name('history');
 });

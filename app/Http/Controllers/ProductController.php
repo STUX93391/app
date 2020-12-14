@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Buisness;
+use App\Models\History;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -43,6 +44,9 @@ class ProductController extends Controller
         $add->save();
         //Decrementing the account balance of the related buisness upon successfull product creation.
         DB::table('accounts')->where('buisness_id',$request->buisness_id)->decrement('balance',$request->price);
+
+        DB::table('history')->insert(['product'=>$request->title,'operation'=>'Added','time'=>\Carbon\Carbon::now()]);
+
         //redirecting to the view products page with the same buisness.
         return redirect()->route('viewproducts',$request->buisness_id)->with('success','Product added succesfully');
         //clearing add product form variables.
@@ -89,7 +93,7 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    
+
     /**
      * Function for incrementing the account balance of the related buisness when a product is sold.
      *
@@ -98,9 +102,11 @@ class ProductController extends Controller
      */
     public function buy($id)
     {
-        $item=DB::table('products')->select('price')->where('id','=',$id)->get();
+        $item=DB::table('products')->select('title','price')->where('id','=',$id)->get();
         $val=$item[0]->price;
         DB::table('accounts')->increment('balance',$val);
+        DB::table('history')->insert(['product'=>$item[0]->title,'operation'=>'Sold','time'=>\Carbon\Carbon::now()]);
+
         return redirect()->back();
     }
 }

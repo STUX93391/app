@@ -13,7 +13,7 @@ class Account extends Model
 
     public $timestamps=true;
 
-    //Declaries the mass assignment
+    //Declares the mass assignment
     protected $fillable=['title','type','number','balance'];
 
     /**
